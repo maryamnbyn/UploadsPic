@@ -5,14 +5,12 @@ class picture extends Db
 {
     public function insertPic($images)
 {
-        foreach ($images['image']['name'] as $key => $val ) {
-
+        foreach ($images['image']['name'] as $key => $val )
+        {
             $filename = $images['image']['name'][$key];
             $filesize = $images['image']['size'][$key];
             $filetempname = $images['image']['tmp_name'][$key];
-        }
             $upload_dir = 'uploads/';
-
             $img_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
             $pic = mktime() . rand(1000, 1000000) . "." . $img_ext;
             move_uploaded_file($filetempname, $upload_dir . $pic);
@@ -27,5 +25,5 @@ class picture extends Db
 
 
         $stmt->execute();
-    }}
+    }}}
 ?>
